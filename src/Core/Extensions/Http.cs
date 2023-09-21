@@ -136,7 +136,7 @@ namespace AspNetCore.Proxy
 
             response.Headers.Remove("transfer-encoding");
 
-            return responseMessage.Content.CopyToAsync(response.Body);
+            return responseMessage.Content.CopyToAsync(response.Body, context.RequestAborted);
         }
 
         private static void AddForwardedHeadersToHttpRequest(HttpContext context, HttpRequestMessage requestMessage)
